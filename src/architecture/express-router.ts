@@ -15,21 +15,21 @@ export class ExpressRouter{
     }
 
     private setupExpressRouter(){
-        this.setupExpressRouter();
         this.sertupControllers();
+        this.setupRouters();
         this.setupRoutes();
-    }
-
-    private setupRouters(){
-        this.userRouter = new UserRouter(this.userController);
-
     }
 
     private sertupControllers(){
         this.userController = new UserController(this.userService);
     }
 
+    private setupRouters(){
+        this.userRouter = new UserRouter(this.userController);
+    }
+
     private setupRoutes(){
         this.router.use('/user', this.userRouter.router);
+        console.log("setup route /user ok");
     }
 }

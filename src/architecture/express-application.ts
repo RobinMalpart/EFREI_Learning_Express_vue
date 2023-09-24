@@ -8,8 +8,8 @@ export class ExpressApplication{
 
     private expressRouter!:ExpressRouter;
     private port!: string;
-    private userService!: UserJsonService;
     private expressServer!: ExpressServer;
+    private userService!: UserJsonService;
 
     constructor(){
         this.setupApplication();
@@ -22,8 +22,8 @@ export class ExpressApplication{
         this.setupEnv();
         this.setupPort();
         this.setupServices();
-        this.setupRouter(this.userService);
-        this.setupServer(this.expressRouter, this.port);
+        this.setupRouter();
+        this.setupServer();
     }
 
     private setupEnv(): void{
@@ -40,12 +40,12 @@ export class ExpressApplication{
         this.userService = new UserJsonService(); 
     }
 
-    private setupRouter(userService: UserJsonService){
-        this.expressRouter = new ExpressRouter(userService);
+    private setupRouter(){
+        this.expressRouter = new ExpressRouter(this.userService);
     }
 
-    private setupServer(expressRouter: ExpressRouter,port:string ){
-        this.expressServer = new ExpressServer(expressRouter, port);
+    private setupServer(){
+        this.expressServer = new ExpressServer(this.expressRouter, this.port);
     }
 
     private getPort(): string {

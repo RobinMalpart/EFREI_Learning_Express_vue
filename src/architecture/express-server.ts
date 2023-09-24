@@ -23,5 +23,6 @@ export class ExpressServer{
 
     private configureRoutes(): void {
         this.express.use('/api', this.expressRouter.router);
+        console.log('setup route /api ok');
     }
 }

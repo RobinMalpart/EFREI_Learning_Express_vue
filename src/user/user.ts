@@ -9,4 +9,9 @@ export class User{
         User.totalUser++,
         this.userName = userName
     }
+
+    //A mettre dans userService nan ?
+    public static increamentTotalUser():void{
+        User.totalUser++;
+    }
 }
