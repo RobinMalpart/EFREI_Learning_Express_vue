@@ -1,7 +1,7 @@
 export class User{
 
     private static totalUser:number = 1;
-    public userId:number;
+    private userId:number;
     private userName:string;
     
     constructor(userName : string){
