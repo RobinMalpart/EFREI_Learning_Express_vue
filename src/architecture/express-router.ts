@@ -1,9 +1,9 @@
-import { CarController } from "../car/carController";
-import { CarRouter } from "../car/carRouter";
-import { CarService } from "../car/carService";
 import { UserController } from "../user/userController";
 import { UserRouter } from "../user/userRouter";
 import { UserService } from "../user/userService";
+import { FruitController } from "../fruit/fruitController";
+import { FruitRouter } from "../fruit/fruitRouter";
+import { FruitService } from "../fruit/fruitService";
 import express from 'express';
 
 export class ExpressRouter{
@@ -12,10 +12,10 @@ export class ExpressRouter{
 
     private userController!: UserController;
     private userRouter!: UserRouter;
-    private carController !: CarController;
-    private carRouter !: CarRouter;
+    private fruitController!:FruitController;
+    private fruitRouter!:FruitRouter;
 
-    constructor(private userService: UserService, private carService : CarService){
+    constructor(private userService: UserService, private fruitService : FruitService){
         this.setupExpressRouter();
     }
 
@@ -27,17 +27,18 @@ export class ExpressRouter{
 
     private sertupControllers(){
         this.userController = new UserController(this.userService);
-        this.carController = new CarController(this.carService);
+        this.fruitController = new FruitController(this.fruitService);
     }
 
     private setupRouters(){
         this.userRouter = new UserRouter(this.userController);
-        this.carRouter = new CarRouter(this.carController);
+        this.fruitRouter = new FruitRouter(this.fruitController);
     }
 
     private setupRoutes(){
         this.router.use('/user', this.userRouter.router);
-        this.router.use('/car', this.carRouter.router);
-        console.log("setup route /user ok");
+        this.router.use('/fruit', this.fruitRouter.router);
+
+        console.log("setup route /user and /route ok");
     }
 }

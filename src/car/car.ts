@@ -1,3 +1,5 @@
+import { CarService } from "./carService";
+
 export class Car implements CarService {
 
     private id:number;

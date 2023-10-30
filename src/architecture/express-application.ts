@@ -2,7 +2,8 @@
 import { UserJsonService } from '../user/userJsonService'
 import { ExpressRouter } from './express-router';
 import { ExpressServer } from './express-server';
-import { CarJsonService } from '../car/carJsonService';
+import { FruitJsonService } from '../fruit/fruitJsonService';
+
 import * as dotenv from 'dotenv';
 
 export class ExpressApplication{
@@ -11,7 +12,7 @@ export class ExpressApplication{
     private port!: string;
     private expressServer!: ExpressServer;
     private userService!: UserJsonService;
-    private carService !: CarJsonService;
+    private fruitService!: FruitJsonService;
 
     constructor(){
         this.setupApplication();
@@ -40,11 +41,11 @@ export class ExpressApplication{
 
     private setupServices(){
         this.userService = new UserJsonService(); 
-        this.carService = new CarJsonService();
+        this.fruitService = new FruitJsonService();
     }
 
     private setupRouter(){
-        this.expressRouter = new ExpressRouter(this.userService, this.carService);
+        this.expressRouter = new ExpressRouter(this.userService, this.fruitService);
     }
 
     private setupServer(){
