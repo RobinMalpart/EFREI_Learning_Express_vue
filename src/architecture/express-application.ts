@@ -1,9 +1,9 @@
 
-import { UserJsonService } from '../user/userJsonService'
+import { UserJsonService } from '../user/userJsonService';
 import { ExpressRouter } from './express-router';
 import { ExpressServer } from './express-server';
 import { FruitJsonService } from '../fruit/fruitJsonService';
-
+import { SaladeJsonService } from '../saladeDeFruit/saladeJsonService';
 import * as dotenv from 'dotenv';
 
 export class ExpressApplication{
@@ -13,6 +13,7 @@ export class ExpressApplication{
     private expressServer!: ExpressServer;
     private userService!: UserJsonService;
     private fruitService!: FruitJsonService;
+    private saladeService!: SaladeJsonService;
 
     constructor(){
         this.setupApplication();
@@ -42,10 +43,11 @@ export class ExpressApplication{
     private setupServices(){
         this.userService = new UserJsonService(); 
         this.fruitService = new FruitJsonService();
+        this.saladeService = new SaladeJsonService();
     }
 
     private setupRouter(){
-        this.expressRouter = new ExpressRouter(this.userService, this.fruitService);
+         this.expressRouter = new ExpressRouter(this.userService, this.fruitService, this.saladeService);
     }
 
     private setupServer(){
@@ -57,7 +59,6 @@ export class ExpressApplication{
         if (!port) {
             throw new Error('No port was found in env file.');
         }
-
         return port;
     }
 }

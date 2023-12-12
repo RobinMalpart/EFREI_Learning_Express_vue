@@ -1,0 +1,14 @@
+[
+    {
+      "nomSalade": "Salade 1",
+      "fruitsMap": {"1": 4, "2": 2}
+    },
+    {
+      "nomSalade": "Salade 2",
+      "fruitsMap": {"2": 3, "3": 1}
+    },
+    {
+      "nomSalade": "Salade 3",
+      "fruitsMap": {"3": 5, "4": 2}
+    }
+]
